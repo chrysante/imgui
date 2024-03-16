@@ -57,9 +57,10 @@ add_backend(${IMGUI_BACKEND_OSX}
     backends/imgui_impl_osx.h
     backends/imgui_impl_osx.mm
 )
-if (${IMGUI_BACKEND_OSX}) 
-  target_compile_options(ImGui PRIVATE "-fobjc-arc")
-endif()
+# We disable this for now because it causes the program to crash during draw
+#if (${IMGUI_BACKEND_OSX})
+#  target_compile_options(ImGui PRIVATE "-fobjc-arc")
+#endif()
 
 add_backend(${IMGUI_BACKEND_GLFW}
   SOURCES
