@@ -40,7 +40,6 @@ function(add_backend option_name)
   endif()
   cmake_parse_arguments(
     PARSE_ARGV 1 ARG ";" ";" "SOURCES_VALUE;SOURCES")
-  #message("${ARG_SOURCES}")
   target_sources(ImGui
     PRIVATE
       ${ARG_SOURCES}
