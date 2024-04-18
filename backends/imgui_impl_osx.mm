@@ -685,7 +685,14 @@ static ImGuiMouseSource GetMouseSource(NSEvent* event)
 static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
 {
     ImGuiIO& io = ImGui::GetIO();
-
+    /// We don't need this because we submit input events manually to ImGui and
+    /// this interferes with windows resizing because we discard these events
+    /// early but they would get picked up by this. However we still need this
+    /// function because we don't listen to "FlagsChangedEvents". Not having
+    /// the last case here messes up detection of modifier flags
+    /// \Note: This code is required for viewports to work. Otherwise we would 
+    /// have to provide our own viewport backend I guess
+#if 0
     if (event.type == NSEventTypeLeftMouseDown || event.type == NSEventTypeRightMouseDown || event.type == NSEventTypeOtherMouseDown)
     {
         int button = (int)[event buttonNumber];
@@ -787,7 +794,7 @@ static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
 
         return io.WantCaptureKeyboard;
     }
-
+#endif
     if (event.type == NSEventTypeFlagsChanged)
     {
         unsigned short key_code = [event keyCode];
