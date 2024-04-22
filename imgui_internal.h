@@ -2843,6 +2843,9 @@ struct IMGUI_API ImGuiWindow
     ImGuiItemStatusFlags    DockTabItemStatusFlags;
     ImRect                  DockTabItemRect;
 
+    void*                   UserPointer;
+    ImRect                  SizeConstraintRect;
+    
 public:
     ImGuiWindow(ImGuiContext* context, const char* name);
     ~ImGuiWindow();
