@@ -19122,7 +19122,11 @@ void ImGui::BeginDockableDragDropSource(ImGuiWindow* window)
     g.LastItemData.ID = window->MoveId;
     window = window->RootWindowDockTree;
     IM_ASSERT((window->Flags & ImGuiWindowFlags_NoDocking) == 0);
+#if 1 // ImGui by default only allows docking when the window is being dragged from the title bar area. We override this to allow docking when dragged from anywhere
+    bool is_drag_docking = true;
+#else
     bool is_drag_docking = (g.IO.ConfigDockingWithShift) || ImRect(0, 0, window->SizeFull.x, GetFrameHeight()).Contains(g.ActiveIdClickOffset); // FIXME-DOCKING: Need to make this stateful and explicit
+#endif
     if (is_drag_docking && BeginDragDropSource(ImGuiDragDropFlags_SourceNoPreviewTooltip | ImGuiDragDropFlags_SourceNoHoldToOpenOthers | ImGuiDragDropFlags_SourceAutoExpirePayload))
     {
         SetDragDropPayload(IMGUI_PAYLOAD_TYPE_WINDOW, &window, sizeof(window));
