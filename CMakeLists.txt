@@ -73,7 +73,7 @@ message("Test Engine enabled")
 
 target_include_directories(imgui
   PUBLIC
-    ${PROJECT_SOURCE_DIR}/test_engine
+    ${PROJECT_SOURCE_DIR}/imgui_test_engine
 )
 
 target_sources(imgui
