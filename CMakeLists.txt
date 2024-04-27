@@ -100,4 +100,6 @@ target_sources(imgui
     imgui_test_engine/thirdparty/Str/Str.h
 )
 
-target_compile_definitions(imgui PUBLIC IMGUI_ENABLE_TEST_ENGINE)
+target_compile_definitions(imgui PUBLIC
+  IMGUI_ENABLE_TEST_ENGINE
+  IMGUI_TEST_ENGINE_ENABLE_COROUTINE_STDTHREAD_IMPL=1)
