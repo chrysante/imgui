@@ -14655,9 +14655,8 @@ static bool ImGui::GetWindowAlwaysWantOwnViewport(ImGuiWindow* window)
     if (g.IO.ConfigViewportsNoAutoMerge || (window->WindowClass.ViewportFlagsOverrideSet & ImGuiViewportFlags_NoAutoMerge))
         if (g.ConfigFlagsCurrFrame & ImGuiConfigFlags_ViewportsEnable)
             if (!window->DockIsActive)
-                if ((window->Flags & (ImGuiWindowFlags_ChildWindow | ImGuiWindowFlags_ChildMenu | ImGuiWindowFlags_Tooltip)) == 0)
-                    if ((window->Flags & ImGuiWindowFlags_Popup) == 0 || (window->Flags & ImGuiWindowFlags_Modal) != 0)
-                        return true;
+                if ((window->Flags & (ImGuiWindowFlags_ChildWindow)) == 0)
+                    return true;
     return false;
 }
 
