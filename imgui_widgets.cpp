@@ -8921,7 +8921,6 @@ bool ImGui::BeginMenuEx(const char* label, const char* icon, bool enabled)
         if (icon_w > 0.0f)
             RenderText(pos + ImVec2(offsets->OffsetIcon, 0.0f), icon);
         RenderArrow(window->DrawList, pos + ImVec2(offsets->OffsetMark + extra_w + g.FontSize * 0.30f, 0.15f), GetColorU32(ImGuiCol_Text), ImGuiDir_Right, 0.8f);
-        PopStyleColor(num_pop_style_colors);
     }
     if (!enabled)
         EndDisabled();
