@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 option(IMGUI_BACKEND_METAL "Use the Metal backend" OFF)
 option(IMGUI_BACKEND_OSX "Use the MacOS backend" OFF)
 option(IMGUI_BACKEND_GLFW "Use the GLFW backend" OFF)
+option(IMGUI_BACKEND_SDL2 "Use the SDL2 backend" OFF)
+option(IMGUI_BACKEND_SDL3 "Use the SDL3 backend" OFF)
 option(IMGUI_TEST_ENGINE "Compile the test engine" OFF)
 
 project(
@@ -63,6 +65,18 @@ add_backend(${IMGUI_BACKEND_GLFW}
   SOURCES
     backends/imgui_impl_glfw.h
     backends/imgui_impl_glfw.cpp
+)
+
+add_backend(${IMGUI_BACKEND_SDL2}
+  SOURCES
+    backends/imgui_impl_sdl2.h
+    backends/imgui_impl_sdl2.cpp
+)
+
+add_backend(${IMGUI_BACKEND_SDL3}
+  SOURCES
+    backends/imgui_impl_sdl3.h
+    backends/imgui_impl_sdl3.cpp
 )
 
 if(NOT ${IMGUI_TEST_ENGINE})
